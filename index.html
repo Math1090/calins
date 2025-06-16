@@ -1,58 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Je t'aime 💖</title>
-  <style>
-    body {
-      background-color: #fff0f5;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      text-align: center;
-      padding: 40px;
-    }
-    h1 {
-      color: #d63384;
-    }
-    button {
-      background-color: #ffb6c1;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      margin: 10px;
-      border-radius: 12px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #ff69b4;
-    }
-  </style>
-  <script type="module">
-    import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.esm.min.js';
+<script>
+  function envoyerMessage(type) {
+    alert("Bouton cliqué : " + type);
+  }
+</script>
 
-    emailjs.init("cLUJMx3_5SctbawhD");
-
-    window.envoyerMessage = function(type) {
-      alert("Envoi du message : " + type);
-      emailjs.send("service_v843nxw", "template_616di2t", {
-        message: type,
-        from_name: "Ta copine 💕",
-        to_name: "Math"
-      })
-      .then(() => alert("Message envoyé avec succès 💌"))
-      .catch(err => alert("Erreur lors de l’envoi : " + JSON.stringify(err)));
-    };
-  </script>
-</head>
-<body>
-  <h1>Simulateur de câlin 💖</h1>
-  <button onclick="envoyerMessage('Fais moi un câlin')">Fais moi un câlin</button>
-  <button onclick="envoyerMessage('J’ai faim')">J’ai faim</button>
-  <button onclick="envoyerMessage('Je t’aime')">Je t’aime</button>
-  <button onclick="envoyerMessage('Tu peux faire le dîner ?')">Tu peux faire le dîner ?</button>
-  <button onclick="envoyerMessage('On va au resto ?')">On va au resto ?</button>
-  <button onclick="envoyerMessage('On regarde une vidéo ?')">On regarde une vidéo ?</button>
-  <button onclick="envoyerMessage('Envoie-moi un mot doux')">Envoie-moi un mot doux</button>
-</body>
-</html>
