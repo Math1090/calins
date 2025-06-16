@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simulateur de câlins 💖</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 3em;
+      color: #ff69b4;
+    }
+    button {
+      margin: 15px;
+      padding: 20px 40px;
+      font-size: 1.2em;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ffa5b0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simulateur de câlins 💖</h1>
+
+  <button onclick="envoyerMessage('Fais moi un câlin 🤗')">Fais moi un câlin</button>
+  <button onclick="envoyerMessage('J’ai faim 🍔')">J’ai faim</button>
+  <button onclick="envoyerMessage('Je t’aime ❤️')">Je t’aime</button>
+  <button onclick="envoyerMessage('Tu peux faire le dîner ? 🍽️')">Tu peux faire le dîner ?</button>
+  <button onclick="envoyerMessage('Resto ? 🍝')">Resto ?</button>
+  <button onclick="envoyerMessage('On regarde une vidéo ? 🎥')">On regarde une vidéo ?</button>
+  <button onclick="envoyerMessage('Envoie-moi un mot doux 💌')">Envoie-moi un mot doux</button>
+
+  <script>
+    (function() {
+      emailjs.init("cLUJMx3_5SctbawhD"); // Ta clé publique EmailJS
+    })();
+
+    function envoyerMessage(message) {
+      emailjs.send("service_gmail", "template_test", {
+        message: message,
+        to_email: "mathhotel2015@gmail.com"
+      }).then(function(response) {
+        alert("Message envoyé 📨 !");
+        console.log("SUCCESS!", response.status, response.text);
+      }, function(error) {
+        alert("Échec de l'envoi ❌");
+        console.error("FAILED...", error);
+      });
+    }
+  </script>
+
+</body>
+</html>
