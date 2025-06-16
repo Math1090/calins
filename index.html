@@ -28,21 +28,6 @@
       background-color: #ff69b4;
     }
   </style>
-  <script type="module">
-    import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.esm.min.js';
-
-    emailjs.init("cLUJMx3_5SctbawhD");
-
-    window.envoyerMessage = function(type) {
-      emailjs.send("service_v843nxw", "template_616di2t", {
-        message: type,
-        from_name: "Ta copine 💕",
-        to_name: "Math"
-      })
-      .then(() => alert("Message envoyé 💌"))
-      .catch(err => alert("Erreur : " + JSON.stringify(err)));
-    };
-  </script>
 </head>
 <body>
   <h1>Simulateur de câlin 💖</h1>
@@ -53,5 +38,30 @@
   <button onclick="envoyerMessage('On va au resto ?')">On va au resto ?</button>
   <button onclick="envoyerMessage('On regarde une vidéo ?')">On regarde une vidéo ?</button>
   <button onclick="envoyerMessage('Envoie-moi un mot doux')">Envoie-moi un mot doux</button>
+
+  <!-- Inclusion classique d'EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialise EmailJS avec ta clé publique
+    emailjs.init("cLUJMx3_5SctbawhD");
+
+    function envoyerMessage(type) {
+      console.log("Bouton cliqué, envoi du message :", type);
+
+      emailjs.send("service_v843nxw", "template_616di2t", {
+        message: type,
+        from_name: "Ta copine 💕",
+        to_name: "Math"
+      })
+      .then(function(response) {
+        alert("Message envoyé 💌");
+        console.log("Email envoyé avec succès :", response.status, response.text);
+      })
+      .catch(function(error) {
+        alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+        console.error("Erreur d'envoi :", error);
+      });
+    }
+  </script>
 </body>
 </html>
